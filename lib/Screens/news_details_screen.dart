@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:news_app/Global/global_style.dart';
 import 'package:news_app/Shared/NewsDetailsWidgets/news_back_button.dart';
 
 import '../Shared/NewsDetailsWidgets/news_details_container.dart';
@@ -11,6 +13,17 @@ class NewsScreenDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Container(
+            width: 60,
+            height: 60,
+            decoration:
+                BoxDecoration(gradient: redGradient, shape: BoxShape.circle),
+            child: Transform.scale(
+                scale: 0.4,
+                child: SvgPicture.asset("assets/images/favourite.svg"))),
+      ),
       body: Stack(
         children: [
           const NewsDetailsImage(image: "assets/images/man1.png"),
