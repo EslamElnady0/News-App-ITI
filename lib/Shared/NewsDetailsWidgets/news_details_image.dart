@@ -13,7 +13,8 @@ class NewsDetailsImage extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.52,
       width: double.infinity,
       decoration: BoxDecoration(
-          image: DecorationImage(fit: BoxFit.cover, image: AssetImage(image))),
+          image:
+              DecorationImage(fit: BoxFit.cover, image: NetworkImage(image))),
     );
   }
 }

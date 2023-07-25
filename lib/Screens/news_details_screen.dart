@@ -8,7 +8,20 @@ import '../Shared/NewsDetailsWidgets/news_details_image.dart';
 import '../Shared/NewsDetailsWidgets/news_title_container.dart';
 
 class NewsScreenDetails extends StatelessWidget {
-  const NewsScreenDetails({super.key});
+  final String date;
+  final String title;
+  final String author;
+  final String content;
+  final String image;
+  final String description;
+  const NewsScreenDetails(
+      {super.key,
+      required this.author,
+      required this.content,
+      required this.date,
+      required this.title,
+      required this.description,
+      required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -26,18 +39,20 @@ class NewsScreenDetails extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          const NewsDetailsImage(image: "assets/images/man1.png"),
-          const NewsDetailsContainer(),
+          NewsDetailsImage(image: image),
+          NewsDetailsContainer(
+            content: content,
+            description: description,
+          ),
           Column(
             children: [
               SizedBox(
                 height: MediaQuery.of(context).size.height * (295 / 812),
               ),
-              const NewsTitleContainer(
-                date: "Sunday, 9 May 2021",
-                author: "Ryan Browne",
-                title:
-                    "Crypto investors should be prepared to lose all their money, BOE governor says",
+              NewsTitleContainer(
+                date: date,
+                author: author,
+                title: title,
               ),
             ],
           ),

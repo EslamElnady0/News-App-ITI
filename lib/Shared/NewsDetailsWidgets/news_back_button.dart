@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class NewsBackButton extends StatelessWidget {
@@ -26,8 +27,8 @@ class NewsBackButton extends StatelessWidget {
               filter: ImageFilter.blur(sigmaX: 40, sigmaY: 40),
               child: Container(
                   padding: const EdgeInsets.all(12),
-                  width: MediaQuery.of(context).size.width * (35 / 375),
-                  height: MediaQuery.of(context).size.height * (35 / 812),
+                  width: 35.w,
+                  height: 35.h,
                   decoration: BoxDecoration(
                       color: const Color(0xffF5F5F5).withOpacity(0.5)),
                   child: Transform.scale(

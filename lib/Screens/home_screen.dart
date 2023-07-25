@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news_app/Data/Cubit/AllNewsCubit/all_news_cubit.dart';
+import 'package:news_app/Shared/HomeScreenWidgets/news_filter_bar.dart';
 
 import '../Shared/HomeScreenWidgets/news_card.dart';
 import '../Shared/HomeScreenWidgets/nofitication_icon.dart';
@@ -10,6 +14,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String filterBarQuery = context.read<AllNewsCubit>().newsQuery;
+    // Future<void> refresh() async {}
+
     return SafeArea(
         child: Scaffold(
       body: Padding(
@@ -49,22 +56,46 @@ class HomePage extends StatelessWidget {
                 SeeAllButton()
               ],
             ),
-            const SizedBox(
-              height: 16,
+            SizedBox(
+              height: 24.h,
+            ),
+            const NewsFilterBar(),
+            SizedBox(
+              height: 16.h,
             ),
             Expanded(
-              child: ListView.builder(
-                itemBuilder: (context, index) {
-                  return const NewsCard(
-                    newsImage: "assets/images/Rectangle 60.png",
-                    author: "Ryan Browne",
-                    newsTitle:
-                        "Crypto investors should be prepared to lose all their money, BOE governor says",
-                    newsContent:
-                        "“I’m going to say this very bluntly again,” he added. “Buy them only if you’re prepared to lose all your money.”",
-                  );
+              child: BlocBuilder<AllNewsCubit, AllNewsState>(
+                builder: (context, state) {
+                  if (state is AllNewsLoading) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (state is AllNewsSuccess) {
+                    return ListView.builder(
+                      itemBuilder: (context, index) {
+                        var articlesData = state.response.articles![index];
+                        return NewsCard(
+                            date: articlesData.publishedAt!,
+                            newsDescription: articlesData.description!,
+                            newsImage: articlesData.urlToImage!,
+                            author: articlesData.author!,
+                            newsTitle: articlesData.title!,
+                            newsContent: articlesData.content!);
+                      },
+                      itemCount: state.response.articles!.length,
+                    );
+                  } else {
+                    return Center(
+                      child: ElevatedButton(
+                          onPressed: () {
+                            context
+                                .read<AllNewsCubit>()
+                                .getAllNews(filterBarQuery);
+                          },
+                          child: const Text("refresh")),
+                    );
+                  }
                 },
-                itemCount: 5,
               ),
             )
           ],

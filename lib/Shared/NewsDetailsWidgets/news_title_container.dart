@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NewsTitleContainer extends StatelessWidget {
@@ -24,37 +25,53 @@ class NewsTitleContainer extends StatelessWidget {
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 40, sigmaY: 40),
           child: Container(
-            padding: const EdgeInsets.all(12),
+            padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 24.w),
             width: MediaQuery.of(context).size.width * (311 / 375),
-            height: MediaQuery.of(context).size.height * (141 / 812),
+            height: 141.h,
             decoration:
                 BoxDecoration(color: const Color(0xffF5F5F5).withOpacity(0.5)),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: Text(
-                  date,
-                  style: GoogleFonts.nunito(color: const Color(0xff2E0505)),
-                ),
+            child: SingleChildScrollView(
+              child: SizedBox(
+                height: 109.h,
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        date,
+                        style: GoogleFonts.nunito(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 12.sp,
+                            color: const Color(0xff2E0505)),
+                      ),
+                      const Spacer(),
+                      Expanded(
+                        flex: 6,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              Text(
+                                title,
+                                style: TextStyle(
+                                    color: const Color(0xff2E0505),
+                                    fontFamily: "NewYorkSmall",
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 15.sp),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const Spacer(),
+                      Text(
+                        "Published by $author",
+                        style: GoogleFonts.nunito(
+                            fontWeight: FontWeight.w800,
+                            fontSize: 10.sp,
+                            color: const Color(0xff2E0505)),
+                      ),
+                    ]),
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: Text(
-                  title,
-                  style: const TextStyle(
-                      color: Color(0xff2E0505),
-                      fontFamily: "NewYorkSmall",
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16),
-                ),
-              ),
-              Text(
-                "Published by $author",
-                style: GoogleFonts.nunito(
-                    fontSize: 10, color: const Color(0xff2E0505)),
-              ),
-            ]),
+            ),
           ),
         ),
       ),
