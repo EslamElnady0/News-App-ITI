@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "142098764213",
+    "project_id": "iti-news-app-f8104",
+    "storage_bucket": "iti-news-app-f8104.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:142098764213:android:f2eae2b16f2155b2e349fc",
+        "android_client_info": {
+          "package_name": "com.example.news_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "142098764213-hld10cono5g04sg5oucbsefos9un20iq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDa-Rc__dsov0Jpu9lUqdWdwJS7jp8mciE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "142098764213-hld10cono5g04sg5oucbsefos9un20iq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
