@@ -6,7 +6,7 @@ import 'package:news_app/Data/Reopsitories/all_news_repo.dart';
 part 'all_news_state.dart';
 
 class AllNewsCubit extends Cubit<AllNewsState> {
-  AllNewsCubit() : super(AllNewsLoading());
+  AllNewsCubit() : super(AllNewsInitial());
   // Future<AllNews?> data = AllNewsRepo().getAllNews();
 
   getAllNews(String query) {
