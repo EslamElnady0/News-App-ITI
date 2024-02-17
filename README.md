@@ -4,9 +4,9 @@ Welcome to the News App, a Flutter application designed to keep you informed and
 
 Features
 
-Personalized News Feed: Choose your favorite topics and sources to tailor your news feed to your interests.
+-Personalized News Feed: Choose your favorite topics and sources to tailor your news feed to your interests.
 
-Breaking News Alerts: Stay informed about important events with breaking news alerts.
+-Breaking News Alerts: Stay informed about important events with breaking news alerts.
 
 
 
